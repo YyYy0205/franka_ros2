@@ -1,0 +1,17 @@
+# 这是一个 ROS2 参数配置文件，用于定义一个名为 "LeftRight Suite" 的传感器套件
+# 该套件仅包含左右两个 RealSense D455 摄像头，适用于机械臂夹爪旁的两个摄像头
+
+## 启动两个摄像头的命令：
+## ros2 launch franka_mobile_sensors cameras/realsense_cameras.launch.py config_file:=left_right_sensor_suite
+
+name: "LeftRight Suite"
+description: "Only left and right realsense cameras"
+cameras:
+  - name: "camera_left"
+    namespace: "camera_left"
+    usb_port: "2-2.1.2"
+    device_profile: "franka_mobile_d455"
+  - name: "camera_right"
+    namespace: "camera_right"
+    usb_port: "2-1.1.4"
+    device_profile: "franka_mobile_d455"
