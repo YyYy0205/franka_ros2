@@ -48,3 +48,52 @@
  1. 编辑机械臂双相机的配置文件
 > left_right_sensor_suite.yaml
 
+# 双臂franka
+## To-do List
+- [ ]移动到内存条上方，夹爪对准内存条
+- [ ]机械臂向下抓取内存条
+- [ ]机械臂将抓取的内存条放在桌子上
+- [ ]再从另外一个位置再抓取一个内存条拿在机械臂夹爪上
+  
+## 2.9
+1. 开发自定义控制器
+   * 创建你的控制器包
+   > `ros2 pkg create my_franka_controllers --build-type ament_cmake --dependencies controller_interface franka_semantic_components`
+   * 编写控制器代码
+   * 编译并安装
+   > `colcon build --packages-select my_franka_controllers
+      source install/setup.bash`
+   * 创建控制器配置文件
+   > `# config/controllers.yaml
+      controller_manager:
+      ros__parameters:
+      my_custom_controller:
+      type: my_franka_controllers/MyCustomController`
+   * 启动并测试
+   > `# 启动基础
+      ros2 launch franka_bringup franka.launch.py robot_ip:=<ip> use_fake_hardware:=true  # 先用仿真测试`
+    ` # 加载你的控制器
+      ros2 control load_controller --set-state active my_custom_controller`
+2. 双臂配置
+   > [FCI_bringup_FR3_DUO](https://frankarobotics.github.io/docs/franka_ros2/franka_bringup/doc/index.html)
+    1. 创建一个关键的配置文件
+        fr3_duo.config.yaml
+       ```
+       # fr3_duo.config.yaml 示例
+       robot_types: "['fr3', 'fr3']"        # 两台都是FR3型号
+       arm_prefixes: "['right', 'left']"    # 为每条臂赋予唯一的前缀（如用于命名空间）
+       robot_ips: "['172.16.0.2', '172.16.1.2']"  # 两条臂控制箱的实际IP地址
+       ```
+    2. 启动系统
+       ```
+       ros2 launch franka_bringup fr3_duo.launch.py \
+       robot_config_file:=/path/to/your/fr3_duo.config.yaml \
+       controller_name:=fr3_duo_joint_impedance_example_controller \
+       use_fake_hardware:=true  # 先用仿真！
+       ```
+       >  * robot_config_file：指向你创建的配置文件路径。如果文件在 franka_bringup/config/ 目录下，可以只写文件名
+       >  * controller_name：指定要加载的双臂控制器。官方提供了一个名为 fr3_duo_joint_impedance_example_controller 的示例控制器。
+       检查状态 `ros2 topic list | grep franka_state  # 应能看到 right 和 left 前缀的状态话题 `
+                 `ros2 control list_controllers        # 检查控制器状态是否为 “active”`
+   3. 如果使用fr3_duo.launch, 则只能使用力矩控制接口控制
+      
