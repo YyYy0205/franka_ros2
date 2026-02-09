@@ -12,7 +12,13 @@
     > franka_ros2 (Humble) 要求 v2.0.2 < v3.0.0 满足 2.2.1
 * Desk帐号：franka / franka_so
 * 密码：franka123  / frankaso123
+* workspace：franka_ros2_ws
+## Franka 配置
+* 先通过网线连接机械臂，在网址输入：`robot.franka.de`进入Desk 
+    > 在setting中设置静态IP：172.16.0.2 掩码：255.255.252.0
+    >> 把PC也设置为静态IP，在相同网段都可访问机械臂
 
+  
 ## 2.4 
  1. Pico 打通
  2. Local Machine Installation 
@@ -37,6 +43,8 @@
 > 可设置机械臂安全工作空间
 4. 通过franka_ros2 控制夹爪
 > `ros2 launch franka_bringup example.launch.py controller_names:=gripper_example_controller gripper=true`
-5. 
 
+## 2.6
+ 1. 编辑机械臂双相机的配置文件
+> left_right_sensor_suite.yaml
 
