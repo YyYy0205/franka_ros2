@@ -21,25 +21,23 @@
 ## 2.11
 1.任务流程
 
-<img width="1317" height="856" alt="image" src="https://github.com/user-attachments/assets/3ce73acc-4afb-405f-be6a-bfcd0f4f6c81" />
+<img width="658" height="428" alt="image" src="https://github.com/user-attachments/assets/3ce73acc-4afb-405f-be6a-bfcd0f4f6c81" />
 
 ```mermaid
 graph LR
     subgraph 第一阶段: 移动与准备
-        A["开始 AP5"] --> B["导航到 AP6"]
-        B --> C["导航到桌子前 AP2"]
-        C --> D["左臂抓取盒子 AP2"]
+        A[开始 AP5] --> B[导航到桌子前 AP2]
+        B --> C[左臂抓取盒子 AP2]
     end
-    
-    subgraph 第二阶段: 巡检与定位
-        D --> E["退后巡检到 AP7"]
-        E --> F["向前移动到发热内存条 AP1"]
+    subgraph 第二阶段: 巡检与抓取发热内存条
+        C --> D[退后巡检到 AP7]
+        D --> E[向前移动到发热内存条 AP1]
+        E --> F[取出的发热内存条并放入盒子里 AP1]
     end
-    
-    subgraph 第三阶段: 操作内存条
-        F --> G["右臂从盒子抓取内存条 AP1"]
-        G --> H["右臂抓取内存条并抬起 AP1"]
-        H --> I["强化学习插入内存条 AP1"]
+    subgraph 第三阶段: 插入内存条
+        F --> G[右臂从盒子抓取内存条 AP1]
+        G --> H[右臂抓取内存条并抬起 AP1]
+        H --> I[强化学习插入内存条 AP1]
     end
 ```
 
