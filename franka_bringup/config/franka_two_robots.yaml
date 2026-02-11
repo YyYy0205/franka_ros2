@@ -1,0 +1,25 @@
+# Configuration file for launching two Franka robots
+# Each robot block must use unique `namespace` and `robot_ip` (or use_fake_hardware="true").
+# Boolean values are quoted as strings to match the project's conventions.
+
+ROBOT1:
+  robot_type: "fr3"
+  arm_prefix: ""
+  fake_sensor_commands: "false"
+  joint_state_rate: 30
+  load_gripper: "false"
+  namespace: "NS_1"
+  robot_ip: "172.16.0.3"
+  use_fake_hardware: "false"
+  use_rviz: "false"
+
+ROBOT2:
+  robot_type: "fr3"
+  arm_prefix: ""
+  fake_sensor_commands: "false"
+  joint_state_rate: 30
+  load_gripper: "false"
+  namespace: "NS_2"
+  robot_ip: "172.16.0.4"
+  use_fake_hardware: "false"
+  use_rviz: "false"

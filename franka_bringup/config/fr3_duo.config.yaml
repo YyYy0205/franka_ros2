@@ -1,0 +1,16 @@
+# Configuration for FR3 Duo (dual-arm) launch
+# The fr3_duo.launch.py expects three parallel string-list entries
+# All lists must have the same length; prefixes must be unique.
+
+# Types of each arm (string list)
+robot_types: "['fr3','fr3']"
+
+# Unique prefixes for each arm (must be unique)
+arm_prefixes: "['right','left']"
+
+# IP addresses of the robots in the same order as above
+robot_ips: "['172.16.0.3','172.16.0.4']"
+
+# Note: Dual-arm support currently only implements the torque/effort
+# command interface. Position/velocity/cartesian interfaces are not
+# supported for the FR3 Duo configuration.
