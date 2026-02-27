@@ -25,6 +25,22 @@
 - [x] 机械臂将抓取的内存条放在盒子里
 - [x] 再从另外一个位置再抓取一个内存条拿在机械臂夹爪上
 
+## 2.27
+1.配置franka_ros2环境
+    按照官分配置文档
+2.运行gazebo实例
+> `ros2 launch franka_gazebo_bringup visualize_franka_robot.launch.py`
+<img width="1536" height="930" alt="截图 2026-02-27 14-17-42" src="https://github.com/user-attachments/assets/c614dfd4-bd6e-4375-84d4-a4fcfbc38a3c" />
+
+3.Joint Velocity Control Example with Gazebo
+> `ros2 launch franka_gazebo_bringup gazebo_joint_velocity_controller_example.launch.py load_gripper:=true franka_hand:='franka_hand'`
+>> [git](https://github.com/frankarobotics/franka_ros2/tree/humble/franka_gazebo)
+
+4.控制gazebo中的franka
+    1. 启动仿真
+    > `source install/setup.bash`
+    > `ros2 launch franka_gazebo_bringup visualize_franka_robot.launch.py load_gripper:=true`
+    
 ## 2.11
 1.任务流程
 
