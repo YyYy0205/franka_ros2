@@ -12,6 +12,15 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+## 这是一个 ROS 2 的顶层 launch 文件，用来有条件地包含并启动模块化的传感器与可视化 
+## launch（摄像头、激光雷达、RViz），并通过启动参数控制哪些子系统启动以及传递配置文件名或机器人类型。
+
+## ros2 launch franka_mobile_sensors franka_mobile_sensors.launch.py
+# 或者只启动摄像头（不启动其他）
+##ros2 launch franka_mobile_sensors franka_mobile_sensors.launch.py start_lidars:=false start_rviz:=false
+# 使用自定义配置文件
+##ros2 launch franka_mobile_sensors franka_mobile_sensors.launch.py config_file:=left_right_sensor_suite
+
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
@@ -53,7 +62,7 @@ def generate_launch_description() -> LaunchDescription:
             description='Configuration file to use (without .yaml extension)'
         ),
     ]
-    
+    # 子launch 包含与条件启动
     camera_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([
             pkg_dir, '/launch/cameras/realsense_cameras.launch.py'
