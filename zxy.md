@@ -25,11 +25,6 @@
 - [x] 放置内存条：机械臂将抓取的内存条放在盒子里
 - [x] 插入内存条：再从盒子中抓取一个内存条插入主板上
 
-## 2.12
-1. 开始（AP5）
-2. 导航至桌子前（导航至：AP2）
-3. 抓取内存条盒子（左臂：zhuahezi1）
-4. 退后巡检 （
 
 ## 2.27
 1.配置franka_ros2环境
@@ -47,6 +42,12 @@
     > `source install/setup.bash`
     > `ros2 launch franka_gazebo_bringup visualize_franka_robot.launch.py load_gripper:=true`
     
+## 2.12
+1. 开始（AP5）
+2. 导航至桌子前（导航至：AP2）
+3. 抓取内存条盒子（左臂：zhuahezi1）
+4. 退后巡检 （
+
 ## 2.11
 1.任务流程
 
