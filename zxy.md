@@ -37,10 +37,9 @@
 > `ros2 launch franka_gazebo_bringup gazebo_joint_velocity_controller_example.launch.py load_gripper:=true franka_hand:='franka_hand'`
 >> [git](https://github.com/frankarobotics/franka_ros2/tree/humble/franka_gazebo)
 
-4.控制gazebo中的franka
-    1. 启动仿真
-    > `source install/setup.bash`
-    > `ros2 launch franka_gazebo_bringup visualize_franka_robot.launch.py load_gripper:=true`
+4. 控制gazebo中的franka
+* `source install/setup.bash`
+* 启动仿真 `ros2 launch franka_gazebo_bringup visualize_franka_robot.launch.py load_gripper:=true`
     
 ## 2.12
 1. 开始（AP5）
